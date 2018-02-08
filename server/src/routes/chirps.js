@@ -25,21 +25,22 @@ router.get("/:id", (req, res) => {
   console.log("GetChirp");
 });
 
-// router.post("/:id", (req, res) => {
-//   let id = req.params.id;
-//   let text = req.body.text;
-//   updateChirp(id, text).then(results => {
-//     res.send(results);
-//   });
-//   console.log("UpdateChirp");
-// });
+router.put("/:id", (req, res) => {
+  let id = req.params.id;
+  let text = req.body.text;
+  updateChirp(id, text).then(results => {
+    res.send(results);
+  });
+  console.log("UpdateChirp");
+});
 
 router.post("/", (req, res) => {
+  console.log("posting in server");
   let chirp = req.body;
+  console.log("chirp body", chirp);
   postChirp(chirp).then(results => {
     res.send(results);
   });
-  console.log(req);
 });
 
 router.delete("/:id", (req, res) => {

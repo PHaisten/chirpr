@@ -19,12 +19,16 @@ class InputField extends Component {
   }
 
   handleClick() {
+    console.log("about to post");
     fetch("http://localhost:3000/api/chirps", {
-      method: "POST",
+      method: "post",
       body: JSON.stringify({
         userid: this.state.userid,
         text: this.state.text,
         location: this.state.location
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
       })
     })
       .then(data => {
@@ -32,7 +36,8 @@ class InputField extends Component {
       })
       .catch(err => {
         console.log("error", err);
-      });
+      })
+      .then(window.location.reload());
     console.log(this.state);
   }
 

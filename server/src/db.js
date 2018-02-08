@@ -40,13 +40,13 @@ export let getChirps = () => {
 export let getChirp = id => {
   return new Promise((resolve, reject) => {
     connection.query(
-      `SELECT * FROM CHIRPS WHERE ID = ${id}`,
+      `SELECT u.name as name, c.id, c.text, c.location, c._created FROM chirps c JOIN users u on c.userid = u.id WHERE c.id = ${id}`,
       (err, res, fields) => {
         if (err) {
           reject();
           return console.log(err);
         }
-        resolve(res);
+        resolve(res[0]);
       }
     );
   });
