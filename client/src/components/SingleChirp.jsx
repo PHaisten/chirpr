@@ -10,7 +10,7 @@ class SingleChirp extends Component {
           key={chirp.id}
         >
           <div className="card-body my-1 py-1">
-            <h5 className="ml-1">@{chirp.name}</h5>
+            <h5 className="ml-2">@{chirp.name}</h5>
             <p className="text-center">{chirp.text}</p>
             <p className="text-center">{chirp._created}</p>
             <Link
